@@ -19,7 +19,10 @@
 	td,th{
 		    padding: 5px 5px!important;
 	}
-
+	.index{
+		top:10px; 
+		font-size: 10px;
+	}
 	#doublescroll
 	{
 	  overflow: auto; overflow-y: hidden; 
@@ -50,8 +53,10 @@
 	}
 	.white-power
 	{
+		position: relative;
 		background-color: white;
 		padding: 10px;
+		font-size: 18px
 	}
 	.guide
 	{
@@ -88,14 +93,15 @@
 	<div class ="row">
 	<div class = "col l5 m5 s12">
 	<div class = "white-power">
-		<div>4x1 − x2 = 9</div>
-		<div>−xi−1 + 4xi − xi+1 = 5, i = 2, . . . , n− 1</div>
-		<div>−xn−1 + 4xn = 5</div>
-
+		<div>4x<span class ="index">1</span> − x<span class ="index">2</span> = 9</div>
+		<div>−x<span class ="index">i−1</span> + 4x<span class ="index">i</span>− x<span class ="index">i+1</span> = 5, i = 2, . . . , n− 1</div>
+		<div>−x<span class ="index">n−1</span> + 4x<span class ="index">n</span> = 5</div>
+		<br>
+		<div>n>1, n - целое</div>
 
 	</div>
 	<div style="margin-top: 30px;" class="input-field col s12">
-      <input type = "number" id="number" class="materialize-input">
+      <input type = "number" min="0" id="number" class="materialize-input">
       <label for="textarea1">N </label>
     </div>
     <div class="clearfix"></div>
