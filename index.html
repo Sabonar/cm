@@ -187,7 +187,7 @@ function print(array){
 	}
 }
 
-function printMatrixInTable(array)
+function printMatrixInTable(array,summ)
 {
 
 	var table = '<table class="bordered"><tbody>';
@@ -196,6 +196,7 @@ function printMatrixInTable(array)
 		for (var j = 0; j < array[i].length; j++) {
 		    table+='<td>' + array[i][j]+'</td>';
 		}
+		table+='<td style ="background-color: rgba(249, 201, 16,0.5)">' + summ[i]+'</td>';
 		table+='</tr>';
 	}
 	table+='</tbody></table>';
@@ -264,14 +265,14 @@ $(document).ready(function(){
 
 			//console.log(printMatrixInTable(array));
 			$('.output').append('<h5>Начальная матрица</h5>');
-			$('.output').append(printMatrixInTable(array));
+			$('.output').append(printMatrixInTable(array,summ));
 			$('.output').append('<h5>Метод прогонки</h5>');
 			//alert('next?');
 			for (var i = 0; i < array.length; i++) {
 
 				gamma = i==0?array[i][i]:getGamma(array[i][i],array[i][i-1],alpha);
 				alpha = getAlpha(array[i][i+1],gamma);
-				beta = i==0?getBeta(array[i][i+1],gamma):getBeta(array[i][i+1],gamma,array[i][i-1],beta);
+				beta = i==0?getBeta(gamma,summ[i]):getBeta(gamma,summ[i],array[i][i-1],beta);
 				$('.output').append('<p><b>Step '+(i+1)+'</b></p>');
 				$('.output').append('<p> Gamma['+(i+1)+'] = '+gamma.toFixed(2)+'</p>');
 				$('.output').append('<p> Alpha['+(i+1)+'] = '+alpha.toFixed(2)+'</p>');
@@ -287,7 +288,7 @@ $(document).ready(function(){
 				summ[i] = beta;
 			}
 			$('.output').append('<h5>Матрица после "прогонки"</h5>');
-			$('.output').append(printMatrixInTable(array));
+			$('.output').append(printMatrixInTable(array,summ));
 
 			x = Array(n).fill(0);
 			x[n] = summ[n];
@@ -301,7 +302,7 @@ $(document).ready(function(){
 			$('#roots').append('<h5>Решения матрицы</h5>');
 			for (var i = 0; i < n; i++) 
 			{
-				$('#roots').append('x'+i +'= ' + x[i].toFixed(2) + '<br>');
+				$('#roots').append('x<span class ="index">'+i +'</span>= ' + x[i].toFixed(2) + '<br>');
 			}
 			$('#roots').fadeIn("slow");
 		}
