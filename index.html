@@ -268,10 +268,10 @@ $(document).ready(function(){
 				gamma = i==0?array[i][i]:getGamma(array[i][i],array[i][i-1],alpha);
 				alpha = getAlpha(array[i][i+1],gamma);
 				beta = i==0?getBeta(array[i][i+1],gamma):getBeta(array[i][i+1],gamma,array[i][i-1],beta);
-				$('.output').append('<p><b>Step '+i+'</b></p>');
-				$('.output').append('<p> Gamma['+i+'] = '+gamma.toFixed(2)+'</p>');
-				$('.output').append('<p> Alpha['+i+'] = '+alpha.toFixed(2)+'</p>');
-				$('.output').append('<p> Betta['+i+'] = '+beta.toFixed(2)+'</p>');
+				$('.output').append('<p><b>Step '+(i+1)+'</b></p>');
+				$('.output').append('<p> Gamma['+(i+1)+'] = '+gamma.toFixed(2)+'</p>');
+				$('.output').append('<p> Alpha['+(i+1)+'] = '+alpha.toFixed(2)+'</p>');
+				$('.output').append('<p> Betta['+(i+1)+'] = '+beta.toFixed(2)+'</p>');
 				$('.output').append('<p>-----------------</p>');
 				array[i][i] = 1;
 				array[i][i-1] = 0;
