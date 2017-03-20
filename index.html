@@ -205,11 +205,12 @@ $(document).ready(function(){
 	
 	$('#number').on('keydown',function(e)
 	{
-		var array = [[4,-1]];
-		var summ = [9];
-		$('.output').html('');
-		$('#roots').html('');
+		
 		if (e.keyCode == 13) {
+			var array = [[4,-1]];
+			var summ = [9];
+			$('.output').html('');
+			$('#roots').html('');
 			var n = +$(this).val();
 
 			for(var i = 0;i<n;i++)
