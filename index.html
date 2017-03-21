@@ -291,19 +291,20 @@ $(document).ready(function(){
 			$('.output').append(printMatrixInTable(array,summ));
 
 			x = Array(n).fill(0);
-			x[n] = summ[n];
+			x[n-1] = summ[n-1];
+			$('#roots').append('x<span class ="index">'+(n-1)+'</span> = ' + x[n-1].toFixed(2) + '<br>');
 			for (var i = n-2; i > -1; i--) 
 			{
-
 				x[i] = array[i][i+1] * x[i+1] + summ[i];
+				$('#roots').append('x<span class ="index">'+i +'</span>= ' + x[i].toFixed(2) + '<br>');
 
 			}
 			
 			$('#roots').append('<h5>Решения матрицы</h5>');
-			for (var i = 0; i < n; i++) 
-			{
-				$('#roots').append('x<span class ="index">'+i +'</span>= ' + x[i].toFixed(2) + '<br>');
-			}
+			// for (var i = 0; i < n; i++) 
+			// {
+			// 	$('#roots').append('x<span class ="index">'+i +'</span>= ' + x[i].toFixed(2) + '<br>');
+			// }
 			$('#roots').fadeIn("slow");
 		}
 		
