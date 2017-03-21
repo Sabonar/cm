@@ -295,7 +295,7 @@ $(document).ready(function(){
 			$('#roots').append('x<span class ="index">'+(n)+'</span> = ' + x[n-1].toFixed(2) + '<br>');
 			for (var i = n-2; i > -1; i--) 
 			{
-				x[i] = array[i][i+1] * x[i+1] + summ[i]; console.log('x'+i+' = ' + array[i][i+1] + ' * ' + x[i+1] + ' + ' + summ[i]);
+				x[i] = -array[i][i+1] * x[i+1] + summ[i]; console.log('x'+(i+1)+' = ' + (-array[i][i+1]) + ' * ' + x[i+1] + ' + ' + summ[i]);
 				$('#roots').append('x<span class ="index">'+(i+1) +'</span>= ' + x[i].toFixed(2) + '<br>');
 
 			}
