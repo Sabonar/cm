@@ -271,11 +271,11 @@ $(document).ready(function(){
 			for (var i = 0; i < array.length; i++) {
 
 				gamma = i==0?array[i][i]:getGamma(array[i][i],array[i][i-1],alpha);
-				alpha = getAlpha(array[i][i+1],gamma);
+				alpha = array[i][i+1]!=undefined ? getAlpha(array[i][i+1],gamma):"";
 				beta = i==0?getBeta(gamma,summ[i]):getBeta(gamma,summ[i],array[i][i-1],beta);
 				$('.output').append('<p><b>Step '+(i+1)+'</b></p>');
 				$('.output').append('<p> Gamma['+(i+1)+'] = '+gamma.toFixed(2)+'</p>');
-				$('.output').append('<p> Alpha['+(i+1)+'] = '+alpha.toFixed(2)+'</p>');
+				if (alpha!='') $('.output').append('<p> Alpha['+(i+1)+'] = '+alpha.toFixed(2)+'</p>');
 				$('.output').append('<p> Betta['+(i+1)+'] = '+beta.toFixed(2)+'</p>');
 				$('.output').append('<p>-----------------</p>');
 				array[i][i] = 1;
@@ -292,11 +292,11 @@ $(document).ready(function(){
 			$('#roots').append('<h5>Решения матрицы</h5>');
 			x = Array(n).fill(0);
 			x[n-1] = summ[n-1];
-			$('#roots').append('x<span class ="index">'+(n-1)+'</span> = ' + x[n-1].toFixed(2) + '<br>');
+			$('#roots').append('x<span class ="index">'+(n)+'</span> = ' + x[n-1].toFixed(2) + '<br>');
 			for (var i = n-2; i > -1; i--) 
 			{
-				x[i] = array[i][i+1] * x[i+1] + summ[i];
-				$('#roots').append('x<span class ="index">'+i +'</span>= ' + x[i].toFixed(2) + '<br>');
+				x[i] = array[i][i+1] * x[i+1] + summ[i]; console.log('x'+i+' = ' + array[i][i+1] + ' * ' + x[i+1] + ' + ' + summ[i]);
+				$('#roots').append('x<span class ="index">'+(i+1) +'</span>= ' + x[i].toFixed(2) + '<br>');
 
 			}
 			
